@@ -5,14 +5,14 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --mode development --open",
+    "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "format": "prettier --write '{*.js,src/**/*.{js,jsx}}'",
     "lint": "eslint src/ --fix"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test", 
+      "pre-commit": "npm test",
       "pre-push": "npm test",
       "...": "..."
     }
@@ -36,7 +36,8 @@
   "homepage": "https://github.com/carlosandf/merch-store#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.18.6",

@@ -7,11 +7,14 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
       '@components': path.resolve(__dirname, './src/components/'),
+      '@containers': path.resolve(__dirname, './src/containers/'),
+      '@routes': path.resolve(__dirname, './src/routes/'),
       '@styles': path.resolve(__dirname, './src/styles/'),
       '@stylesComponents': path.resolve(__dirname, './src/styles/components'),
     },
@@ -56,6 +59,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
+    historyApiFallback: true,
     compress: true,
     port: 3005,
   },

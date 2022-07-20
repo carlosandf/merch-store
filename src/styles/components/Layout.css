@@ -8,8 +8,12 @@ body {
 }
 
 .Main {
-  padding: 10px;
-  grid-template-columns: minmax(auto, 768px);
-  display: grid;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  margin: 0 auto;
+  min-height: 100vh;
 }

@@ -1,6 +1,7 @@
 .Products-items {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, 250px);
   grid-gap: 1.5rem;
+  justify-content: center;
   grid-row-gap: 1.5em;
   display: grid;
 }
@@ -43,6 +44,8 @@
   cursor: pointer;
   font-size: 14px;
   font-weight: 300;
+  color: #fff;
+  text-shadow: 0px 3px 10px rgba(0, 0, 0, 0.749);
 }
 .Products-item button:hover {
   background-color: rgba(39,44,49,0.06);

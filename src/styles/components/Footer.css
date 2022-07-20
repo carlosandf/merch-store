@@ -1,4 +1,10 @@
 .Footer {
   display: flex;
-  justify-content: space-between;
+  color: #fff;
+  background-color: #63b8ee;
+  padding: 30px 7px;
+  margin-top: 50vh;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

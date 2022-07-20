@@ -1,6 +1,9 @@
 .Header {
   display: flex;
+  padding: 0 25px;
   justify-content: space-between;
+  margin-bottom: 50px;
+  align-items: center;
 }
 .Header-checkout {
   display: flex;
@@ -9,11 +12,23 @@
   justify-items: center;
   width: 30px;
   margin: 0 0 0 0.5em;
+  position: relative;
 }
 .Header-alert {
-  color: #33b13a;
-  font-size: 14px;
-  margin-left: 5px;
+  display: grid;
+  place-content: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bolder;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -40%;
+  left: 60%;
+  object-fit: cover;
+  background-color: red;
+  padding: 2px;
+  border-radius: 50px;
 }
 .Header a {
   text-decoration: none;

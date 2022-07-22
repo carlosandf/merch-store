@@ -2,30 +2,26 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import AppContext from '@context/AppContext';
+import handleSumTotal from '@utils/handleSumTotal';
 import '@stylesComponents/Payment.css';
 
-const id = "AZn9G7xHYxV2lkElDQNcbiIAn8LPz4j6yio20VSpcdJfDYvQ2Q3DiPnEZR_OIcqkdpIuOgCOgvKnUCwM";
+const id = "AX3Mv8oAEVajeJPAxXjE2ULO-Ac6nD8K5hy1XMR8SeXDe8BxUfgFo5YCjmFB8vNUob3XS7fvrtBU-7fw";
 
 function Payment() {
-  const { state } = useContext(AppContext);
-  const { cart } = state;
-
-  const handleSumTotal = () => {
-    const reducer = (accumulator, currentValue) => (
-      accumulator + currentValue.price
-    )
-    const sum = cart.reduce(reducer, 0);
-    return sum;
-  }
-
-  const [paidFor , setPaidFor] = useState(false)
-
-  const handleApprove = (orderID) => {
-    setPaidFor(true)
-  }
+  const { state, addNewOrder } = useContext(AppContext);
+  const { cart,buyer } = state;
 
   const history = useNavigate()
-  if(paidFor) history('/checkout/success')
+
+  const handleApprove = (data) => {
+    const newOrder = {
+      buyer,
+      products: cart,
+      payment: data
+    }
+    addNewOrder(newOrder);
+    history('/checkout/success')
+  }
 
   return (
     <PayPalScriptProvider
@@ -62,7 +58,7 @@ function Payment() {
                 const details = await actions.order.capture();
                 const name = details.payer.name.given_name;
                 handleApprove(data.orderID);
-                console.log(name);
+                console.log(`transacion aprovada`);
               }}
             />
           </div>

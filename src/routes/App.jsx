@@ -8,10 +8,22 @@ import Success from '@containers/Success';
 import NotFound from '@containers/NotFound';
 import Layout from '@components/Layout';
 import { AppContextProvider } from '@context/AppContext';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+
 import '@stylesComponents/App.css';
+
+const id = "AX3Mv8oAEVajeJPAxXjE2ULO-Ac6nD8K5hy1XMR8SeXDe8BxUfgFo5YCjmFB8vNUob3XS7fvrtBU-7fw";
+
+const initialOptions = {
+  "client-id": id,
+  currency: "USD",
+  intent: "capture",
+};
 
 function App() {
   return (
+    <PayPalScriptProvider
+      options={initialOptions}>
       <AppContextProvider>
         <BrowserRouter>
           <Layout>
@@ -26,6 +38,7 @@ function App() {
           </Layout>
         </BrowserRouter>
       </AppContextProvider>
+    </PayPalScriptProvider>
   );
 }
 

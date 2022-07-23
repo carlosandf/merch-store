@@ -30,7 +30,6 @@ const useInitialState = () => {
       ...state,
       orders: [...state.orders, payload],
     })
-    console.log(state)
   }
 
   return {

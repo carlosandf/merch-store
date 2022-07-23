@@ -12,7 +12,6 @@ function Information() {
   const handleSubmit = () => {
     const formData = new FormData(form.current);
     const buyer = Object.fromEntries(formData);
-
     addToBuyer(buyer);
 
     navigate('/checkout/payment');
@@ -63,7 +62,7 @@ function Information() {
       <div className="Information-sidebar">
         <h3>Pedido:</h3>
         {cart.map(item => (
-          <div className="Information-item">
+          <div className="Information-item" key={item.title}>
             <div className="Information-element">
               <h4>{item.title}</h4>
               <span>${item.price}</span>

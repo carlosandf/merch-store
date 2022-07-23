@@ -21,6 +21,25 @@ function Payment() {
     history('/checkout/success')
   }
 
+  const handleCreateOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: handleSumTotal(cart),
+          },
+        },
+      ],
+    });
+  }
+
+  const handleOnApprove = async (data, actions) => {
+    const details = await actions.order.capture();
+    const name = details.payer.name.given_name;
+    handleApprove(data.orderID);
+    console.log(`transacion aprovada ${name}`);
+  }
+  
   return (
     <section className="Payment">
       <div className="Payment-content">
@@ -38,24 +57,8 @@ function Payment() {
         <div className="Payment-button">
           <PayPalButtons
             style={{layout: "vertical"}}
-            createOrder={(data, actions) => {
-              return actions.order.create({
-                purchase_units: [
-                  {
-                    amount: {
-                      value: handleSumTotal(cart),
-                    },
-                  },
-                ],
-              });
-            }}
-            onApprove={async (data, actions) => {
-              console.log(data)
-              const details = await actions.order.capture();
-              const name = details.payer.name.given_name;
-              handleApprove(data.orderID);
-              console.log(`transacion aprovada`);
-            }}
+            createOrder={handleCreateOrder}
+            onApprove={handleOnApprove}
           />
         </div>
       </div>

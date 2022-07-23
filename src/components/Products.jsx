@@ -9,7 +9,6 @@ function Products() {
 
   const handleAddToCart = product => {
     addToCart(product)
-    console.log(product);
   };
 
   return (

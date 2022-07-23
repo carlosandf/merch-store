@@ -12,10 +12,8 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 import '@stylesComponents/App.css';
 
-const id = "AX3Mv8oAEVajeJPAxXjE2ULO-Ac6nD8K5hy1XMR8SeXDe8BxUfgFo5YCjmFB8vNUob3XS7fvrtBU-7fw";
-
 const initialOptions = {
-  "client-id": id,
+  "client-id": process.env.CLIENT_ID,
   currency: "USD",
   intent: "capture",
 };

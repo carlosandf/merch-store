@@ -10,7 +10,6 @@ function Checkout() {
 
   const handleRemove = product => {
     removeFromCart(product);
-    console.log(product)
   }
 
   return (
@@ -21,7 +20,7 @@ function Checkout() {
           : <h3>Aún no hay pedidos</h3>
         }
         {cart.map(item => (
-          <div className="Checkout-item">
+          <div className="Checkout-item" key={item.title}>
             <div className="Checkout-element">
               <h4>{item.title}</h4>
               <span>${item.price}</span>
